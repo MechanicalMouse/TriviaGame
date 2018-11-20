@@ -60,7 +60,7 @@ var questionDisplay = function() {
         for (var i = 0; i <= 3; i++) {
             $(questions[j].divClass).append('<input type="radio"  name="' + questions[j].name + '" value="' + questions[j].ans[i] + '"/><label for="' + labels[i] + '">' + questions[j].ans[i] + '</label>');
         }
-        $('.questions').prepend('<hr />');
+        $('.questions').prepend('<br> <br>');
     }
 }
 
@@ -73,14 +73,14 @@ var countdown = function(seconds) {
         if (seconds === 0) {
             $('.container').fadeOut(500);
             var correctAnswers = 0;
-            var wrongAnswers = 0;
+            var incorrectAnswers = 0;
 
             $('#correctTotal').append(correctAnswers);
-            $('#wrongTotal').append(wrongAnswers);
+            $('#incorrectTotal').append(incorrectAnswers);
             $('#scoreBoard').fadeIn(1000).show();
             
             clearInterval(timer);
-            return;
+
         }
     }, 1000);
 
