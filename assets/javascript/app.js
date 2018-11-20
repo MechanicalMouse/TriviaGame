@@ -58,7 +58,7 @@ var questionDisplay = function() {
         $(questions[j].divClass).append('<div class ="ques-title">' + questions[j].ques + '</div>');
 
         for (var i = 0; i <= 3; i++) {
-            $(questions[j].divClass).append('<input type="radio"  name="'+ questions[j].name + '" value="'+ " " + questions[j].ans[i] + '"/><label for="' + labels[i] + '">' + questions[j].ans[i] + '</label>');
+            $(questions[j].divClass).append('<input type="radio"  name="'+ questions[j].name + '" value="'+ questions[j].ans[i] + '"/><label for="' + labels[i] + '">' + questions[j].ans[i] + '</label>');
         }
         $('.questions').prepend('<br> <br>');
     }
@@ -80,7 +80,7 @@ var countdown = function(seconds) {
             $('#incorrectTotal').append(incorrectAnswers);
             //Should bring up the scores, but isn't working?
             $('#scoreBoard').fadeIn(1000).show();
-            
+
             clearInterval(timer);
 
         }
@@ -90,5 +90,8 @@ var countdown = function(seconds) {
     $('#sub-btn').on('click', function() {
         clearInterval(timer);
         $('.container').fadeOut(500);
+        //Should bring up the scores, but isn't working?
+        $('#scoreBoard').fadeIn(1000).show();
+
     })
 };
