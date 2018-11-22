@@ -92,7 +92,7 @@ var countdown = function(seconds) {
         clearInterval(timer);
         $('.container').fadeOut(500);
         
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 6; i++) {
     
             if ($('input:radio[name="' + questions[i].name + '"]:checked').val() === questions[i].correct) {
     
@@ -104,7 +104,7 @@ var countdown = function(seconds) {
 
         //Should bring up the scores, but isn't working?
         $('#scoreBoard').fadeIn(1000).show();
-        
+
 
     })
     
