@@ -41,6 +41,9 @@ var questions = [{
     divClass: ".wheel",
 }]
 
+var correctAnswers = 0;
+var incorrectAnswers = 0;
+
 var startGame = $("#start-btn").on("click", function() {
     $(this).parent().hide();
     $('.container').show();
@@ -73,14 +76,15 @@ var countdown = function(seconds) {
         
 
         if (seconds === 0) {
-            $('.container').fadeOut(500);
-            var correctAnswers = 0;
-            var incorrectAnswers = 0;
+            $('.questions').fadeOut(500);
+            correctAnswers = 0;
+            incorrectAnswers = 0;
+
 
             $('#correctTotal').append(correctAnswers);
             $('#incorrectTotal').append(incorrectAnswers);
             //Should bring up the scores, but isn't working?
-            $('#scoreBoard').fadeIn(1000).show();
+            $('#scoreBoard').fadeIn(1000);
 
             clearInterval(timer);
 
@@ -90,7 +94,7 @@ var countdown = function(seconds) {
 
     $('#sub-btn').on('click', function() {
         clearInterval(timer);
-        $('.container').fadeOut(500);
+        $('.questions').fadeOut(500);
         
         for (var i = 0; i < 6; i++) {
     
@@ -103,7 +107,7 @@ var countdown = function(seconds) {
         };
 
         //Should bring up the scores, but isn't working?
-        $('#scoreBoard').fadeIn(1000).show();
+        $('#scoreBoard').fadeIn(1000);
 
 
     })
