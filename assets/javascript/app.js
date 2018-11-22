@@ -1,12 +1,12 @@
 var questions = [{
-    ques: "Hamsters were named from the German word 'hamstern' which means?",
-    ans: ["to burrow", "to hoard", "to gnaw", "to gather"],
+    ques: "Hamsters were named from the German word 'hamstern' which means:",
+    ans: ["To burrow", "To hoard", "To gnaw", "To gather"],
     name: "hamstern",
     correct: "to hoard",
     divClass: ".hamstern"
 },
 {
-    ques: "How do you pick up a hamster?",
+    ques: "What's the best way to pick up a hamster?",
     ans: ["By the paws", "By the scruff", "Scoop with both hands", "Sneak up and grab them"],
     name: "pickUp",
     correct: " Scoop with both hands",
@@ -55,7 +55,6 @@ var labels = ["first", "second", "third", "forth"];
 
 
 var questionDisplay = function() {
-    $(".questions :not('#sub-btn')").empty();
     
     for (var j = 0; j < 6; j++) {
         $('.questions').prepend('<div class="' + questions[j].name + '"></div>');
@@ -76,14 +75,13 @@ var countdown = function(seconds) {
         
 
         if (seconds === 0) {
-            $('.questions').fadeOut(500);
+            $('.container').fadeOut(500);
             correctAnswers = 0;
             incorrectAnswers = 0;
 
 
             $('#correctTotal').append(correctAnswers);
             $('#incorrectTotal').append(incorrectAnswers);
-            //Should bring up the scores, but isn't working?
             $('#scoreBoard').fadeIn(1000);
 
             clearInterval(timer);
@@ -94,19 +92,23 @@ var countdown = function(seconds) {
 
     $('#sub-btn').on('click', function() {
         clearInterval(timer);
-        $('.questions').fadeOut(500);
+        $('.container').fadeOut(500);
         
         for (var i = 0; i < 6; i++) {
     
             if ($('input:radio[name="' + questions[i].name + '"]:checked').val() === questions[i].correct) {
     
                 correctAnswers++;
+                $('#correctTotal').append(correctAnswers);
             } else {
                 incorrectAnswers++;
+                $('#incorrectTotal').append(incorrectAnswers);
             };
+
+            
         };
 
-        //Should bring up the scores, but isn't working?
+
         $('#scoreBoard').fadeIn(1000);
 
 
