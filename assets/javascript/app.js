@@ -86,28 +86,25 @@ var countdown = function(seconds) {
 
         }
     }, 1000);
-       
-    //var gradeQuiz = $('#sub-btn').on('click', function() {
 
-    
-        //for (var i = 0; i < 10; i++) {
-    
-            //if ($('input:radio[name="' + questions[i].name + '"]:checked').val() === questions[i].correct) {
-    
-               // correctAnswers++;
-           // } else {
-                //incorrectAnswers++;
-            //};
-        //};
-    //});
-    
 
     $('#sub-btn').on('click', function() {
         clearInterval(timer);
         $('.container').fadeOut(500);
+        
+        for (var i = 0; i < 10; i++) {
+    
+            if ($('input:radio[name="' + questions[i].name + '"]:checked').val() === questions[i].correct) {
+    
+                correctAnswers++;
+            } else {
+                incorrectAnswers++;
+            };
+        };
+
         //Should bring up the scores, but isn't working?
         $('#scoreBoard').fadeIn(1000).show();
-        gradeQuiz();
+        
 
     })
     
