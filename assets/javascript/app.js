@@ -68,7 +68,7 @@ var countdown = function(seconds) {
 
     var timer = setInterval(function() {
         seconds = seconds - 1;
-        $("#time-remain").html(seconds);
+        $("#time-left").html(seconds);
         
 
         if (seconds === 0) {
