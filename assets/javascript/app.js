@@ -87,20 +87,20 @@ var countdown = function(seconds) {
         }
     }, 1000);
        
-    var gradeQuiz = $('#sub-but').on('click', function() {
+    //var gradeQuiz = $('#sub-btn').on('click', function() {
 
     
-        for (var i = 0; i < 10; i++) {
+        //for (var i = 0; i < 10; i++) {
     
-            if ($('input:radio[name="' + questions[i].name + '"]:checked').val() === questions[i].correct) {
+            //if ($('input:radio[name="' + questions[i].name + '"]:checked').val() === questions[i].correct) {
     
-                correctAnswers++;
-            } else {
-                incorrectAnswers++;
-            };
-        };
-    });
-
+               // correctAnswers++;
+           // } else {
+                //incorrectAnswers++;
+            //};
+        //};
+    //});
+    
 
     $('#sub-btn').on('click', function() {
         clearInterval(timer);
@@ -110,4 +110,5 @@ var countdown = function(seconds) {
         gradeQuiz();
 
     })
+    
 };
