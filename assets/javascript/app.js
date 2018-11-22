@@ -50,6 +50,7 @@ var startGame = $("#start-btn").on("click", function() {
 
 var labels = ["first", "second", "third", "forth"];
 
+
 var questionDisplay = function() {
     $(".questions :not('#sub-btn')").empty();
     
@@ -85,6 +86,20 @@ var countdown = function(seconds) {
 
         }
     }, 1000);
+       
+    var gradeQuiz = $('#sub-but').on('click', function() {
+
+    
+        for (var i = 0; i < 10; i++) {
+    
+            if ($('input:radio[name="' + questions[i].name + '"]:checked').val() === questions[i].correct) {
+    
+                correctAnswers++;
+            } else {
+                incorrectAnswers++;
+            };
+        };
+    });
 
 
     $('#sub-btn').on('click', function() {
@@ -92,6 +107,7 @@ var countdown = function(seconds) {
         $('.container').fadeOut(500);
         //Should bring up the scores, but isn't working?
         $('#scoreBoard').fadeIn(1000).show();
+        gradeQuiz();
 
     })
 };
