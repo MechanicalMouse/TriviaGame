@@ -1,16 +1,9 @@
 var questions = [{
-    ques: "Hamsters were named from the German word 'hamstern' which means:",
+    ques: "Hamsters were named from the German word 'hamustro' which means:",
     ans: ["To burrow", "To hoard", "To gnaw", "To gather"],
-    name: "hamstern",
+    name: "hamustro",
     correct: "to hoard",
-    divClass: ".hamstern"
-},
-{
-    ques: "What's the best way to pick up a hamster?",
-    ans: ["By the paws", "By the scruff", "Scoop with both hands", "Sneak up and grab them"],
-    name: "pickUp",
-    correct: " Scoop with both hands",
-    divClass: ".pickUp"
+    divClass: ".hamustro"
 },
 {
     ques: "What food is bad for hamsters?",
@@ -18,6 +11,13 @@ var questions = [{
     name: "badFood",
     correct: "Chocolate",
     divClass: ".badFood"
+},
+{
+    ques: "What's the best way to pick up a hamster?",
+    ans: ["By the paws", "By the scruff", "Scoop with both hands", "Sneak up and grab them"],
+    name: "pickUp",
+    correct: " Scoop with both hands",
+    divClass: ".pickUp"
 },
 {
     ques: "Where do Golden hamsters originate from?",
@@ -39,7 +39,7 @@ var questions = [{
     name: "wheel",
     correct: "Wire",
     divClass: ".wheel",
-}]
+}];
 
 var correctAnswers = 0;
 var incorrectAnswers = 0;
@@ -57,15 +57,15 @@ var labels = ["first", "second", "third", "forth"];
 var questionDisplay = function() {
     
     for (var j = 0; j < 6; j++) {
-        $('.questions').prepend('<div class="' + questions[j].name + '"></div>');
-        $(questions[j].divClass).append('<div class ="ques-title">' + questions[j].ques + '</div>');
+        $(".questions").prepend(`<div class="${questions[j].name}"></div>`);
+        $(questions[j].divClass).append(`<div class ="ques-title"> ${questions[j].ques} </div>`);
 
         for (var i = 0; i <= 3; i++) {
-            $(questions[j].divClass).append('<input type="radio"  name="'+ questions[j].name + '" value="'+ questions[j].ans[i] + '"/><label for="' + labels[i] + '">' + questions[j].ans[i] + '</label>');
+            $(questions[j].divClass).append(` <input type="radio"  name="${questions[j].name}" value="${questions[j].ans[i]}"/> <label for="${labels[i]}"> <br> ${questions[j].ans[i]}</label>`);
         }
-        $('.questions').prepend('<br> <br>');
+        $(".questions").prepend("<br> <br>");
     }
-}
+};
 
 var countdown = function(seconds) {
 
@@ -75,43 +75,49 @@ var countdown = function(seconds) {
         
 
         if (seconds === 0) {
-            $('.container').fadeOut(500);
+            $(".container").fadeOut(500);
+
             correctAnswers = 0;
             incorrectAnswers = 0;
 
-
-            $('#correctTotal').append(correctAnswers);
-            $('#incorrectTotal').append(incorrectAnswers);
-            $('#scoreBoard').fadeIn(1000);
+            $("#correct").html(correctAnswers);
+            $("#incorrect").html(incorrectAnswers);
+            $("#scoreBoard").fadeIn(1000);
 
             clearInterval(timer);
 
         }
+
     }, 1000);
 
 
-    $('#sub-btn').on('click', function() {
+    $("#sub-btn").on("click", function() {
         clearInterval(timer);
-        $('.container').fadeOut(500);
+        $(".container").fadeOut(500);
         
         for (var i = 0; i < 6; i++) {
     
-            if ($('input:radio[name="' + questions[i].name + '"]:checked').val() === questions[i].correct) {
+            if ($(`input:radio[name="${questions[i].name}"]:checked`).val() === questions[i].correct) {
     
                 correctAnswers++;
-                $('#correctTotal').append(correctAnswers);
+                $("#correct").html(correctAnswers);
             } else {
                 incorrectAnswers++;
-                $('#incorrectTotal').append(incorrectAnswers);
+                $("#incorrect").html(incorrectAnswers);
             };
 
             
         };
 
 
-        $('#scoreBoard').fadeIn(1000);
+        $("#scoreBoard").fadeIn(1000);
 
-
-    })
+    });
     
 };
+
+$("#restart-btn").on("click", function() {
+    
+    document.location.reload();
+
+});
